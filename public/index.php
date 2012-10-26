@@ -8,14 +8,12 @@
  * @author Lalitchandra Pakalomattam
  *   
  */
-$root = realpath(dirname(__FILE__));
+
+//ROOT Path modified to point to the web app folder
+$root = realpath(dirname(__FILE__). "/../app/");
 define('ROOT', $root);
 
-// Add secret devel parameter to query string for devel info.
-if(isset($_GET['g04753m135'])) {
-	phpinfo();
-	die();
-}
+require 'vendor/autoload.php';
 
 // Require basic kobros klasses. Modules be using auto load so kobro cms very light!
 require_once ROOT . '/inc/KobroCms.php'; 
