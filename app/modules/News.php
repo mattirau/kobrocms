@@ -15,10 +15,18 @@ class Module_News extends Module
 		
 		// Be private method so no can call from module! Safe!
 		
-		$sql = "SELECT * FROM news WHERE page_id = {$pageId} ORDER BY created DESC LIMIT {$limit}";
-		$query = $this->kobros->db->query($sql);
+		$sql = "SELECT * FROM news WHERE page_id = :page_id ORDER BY created DESC LIMIT :limit";
+                
+                $stmt = $this->kobros->db->prepare($sql);
+                
+                $stmt->bindParam(":page_id", $pageId, PDO::PARAM_INT);
+                
+                $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+                
+		$stmt->execute();
+                
 		$news = array();
-		while($res = $query->fetch(PDO::FETCH_OBJ)) {
+		while($res = $stmt->fetch(PDO::FETCH_OBJ)) {
 			$news[] = $res; 
 		}
 		
@@ -65,7 +73,7 @@ class Module_News extends Module
 		$itemId = (int) $params['id'];
 		
 		$sql = "SELECT * FROM news WHERE page_id = ? AND id = ?";
-		$stmt = $this->kobros->db->query($sql);
+		$stmt = $this->kobros->db->prepare($sql);
                 $stmt->execute(array($pageId,$itemId));
                 
                 
@@ -103,7 +111,7 @@ class Module_News extends Module
 		$pageId = (int) $params['page'];
 		$itemId = (int) $params['id'];
 		
-		$sql = "SELECT * FROM news WHERE page_id = {$pageId} AND id = {$itemId}";
+		$sql = "SELECT * FROM news WHERE page_id = ? AND id = ?";
 		$stmt = $this->kobros->db->prepare($sql);
                 $stmt->execute(array($pageId,$itemId));
                 
@@ -128,8 +136,6 @@ class Module_News extends Module
 		$stmt->execute(array($item->id, $_POST['comment'], $now));
 
 		header("Location: {$_SERVER['HTTP_REFERER']}");
-		
-		
 		
 		
 	}

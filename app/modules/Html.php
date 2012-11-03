@@ -12,21 +12,21 @@ class Module_Html extends Module
 	{
 		
 	    
-		// If we want html from different page we get it
 		if(isset($params['page']) && $params['page']) {
 			$page = $this->kobros->getPage($params['page']);
 		} else {
-			// We not get it
 			$page = $this->kobros->page;
 		}
 
-		// We fetch from da base.
-		$sql = "SELECT content FROM html WHERE block_id = {$params['block_id']} AND page_id = {$page->id}";
-		$q = $this->kobros->db->query($sql);
+		$sql = "SELECT content FROM html WHERE block_id = ? AND page_id = ?";
+                
+                $stmt = $this->kobros->db->prepare($sql);
+                
+		$stmt->execute(array($params['block_id'],$page->id));
 
 		// We put view
 		$view = new View();		
-		$view->html = $q->fetch(PDO::FETCH_COLUMN);
+		$view->html = $stmt->fetch(PDO::FETCH_COLUMN);
 		
 		// User is needed because he has maybe admin right
 		$view->user = $_SESSION['user'];
@@ -56,12 +56,14 @@ class Module_Html extends Module
 
 		// We fetch all from da base.
 		$sql = "SELECT * FROM html WHERE block_id = {$params['block_id']} AND page_id = {$page->id}";
-		$q = $this->kobros->db->query($sql);
-		
+                
+                $stmt = $this->kobros->db->prepare($sql);
+                
+		$stmt->execute(array($params['block_id'],$page->id));
 		
 		// We put view
 		$view = new View();		
-		$view->html = $q->fetch(PDO::FETCH_OBJ);
+		$view->html = $stmt->fetch(PDO::FETCH_OBJ);
 		
 		// User is needed because he has maybe admin right
 		$view->user = $_SESSION['user'];

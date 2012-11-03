@@ -47,10 +47,12 @@ class KobroCms
 	
 	private function __construct()
 	{
-		// We parse customers config.
+		// We parse customers config.s
 		$this->config = $config = parse_ini_file(ROOT . "/config.ini");
-				
-		// We connect to database
+		
+                // Define DOMAIN static variable for use in temlates
+                define("DOMAIN", $this->config["domain"]);
+
 		$this->db = new PDO("mysql:host={$this->config['db_host']};dbname={$this->config['db_schema']}", $this->config['db_user'], $this->config['db_password']);
 		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
@@ -81,11 +83,15 @@ class KobroCms
 	 */
 	public function getPage($pageId)
 	{
-		// We be casting dem page id to integer so the parameter always valid.
+		// A bit useless but 
 		$pageId = (int) $pageId;
 		
-		$sql = "SELECT * FROM page WHERE id = {$pageId}";
-		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+		$sql = "SELECT * FROM page WHERE id = ?";
+                
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute(array($pageId));
+                
+		return $stmt->fetch(PDO::FETCH_OBJ);
 	}
 	
 	

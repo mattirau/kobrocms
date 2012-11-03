@@ -23,8 +23,10 @@ class Module_Contact extends Module
 		
 		$stmt = $this->kobros->db->prepare("SELECT * FROM contact where page_id = ?"); 
                 
-                $contact = $stmt->execute(array($pageId))->fetch(PDO::FETCH_OBJ);
-		
+                $stmt->execute(array($pageId));
+                
+		$contact = $stmt->fetch(PDO::FETCH_OBJ);
+                        
 		return $contact;
 		
 	}
