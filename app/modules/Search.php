@@ -17,7 +17,7 @@ class Module_Search extends Module
 		$view = new View();
 		$view->page = $page;
 				
-		return $view->render(ROOT . '/templates/data/search/quicksearch.phtml');
+		return $view->render(ROOT . '/app/templates/data/search/quicksearch.phtml');
 				
 	}	
 	
@@ -32,7 +32,7 @@ class Module_Search extends Module
 		// If we has seartch string we poop it to template!
 		$view->s = (isset($params['s'])) ? $params['s'] : '';
 		
-		return $view->render(ROOT . '/templates/data/search/search.phtml');
+		return $view->render(ROOT . '/app/templates/data/search/search.phtml');
 		
 	}
 	

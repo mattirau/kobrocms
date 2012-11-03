@@ -47,7 +47,7 @@ class Module_Contact extends Module
 		
 		$view->forward = $params['forward'];
 		
-		return $view->render(ROOT . '/templates/data/contact/default.phtml');
+		return $view->render(ROOT . '/app/templates/data/contact/default.phtml');
 	}	
 	
 	
@@ -87,7 +87,7 @@ class Module_Contact extends Module
 			
 			$view->contact = $contact;
 			
-			return $view->render(ROOT . '/templates/data/contact/default.phtml');
+			return $view->render(ROOT . '/app/templates/data/contact/default.phtml');
 		} else {
 
 			// mailer and redirect be here
@@ -115,7 +115,7 @@ class Module_Contact extends Module
 	protected function _thanks($params)
 	{
 		$view = new View();
-		return $view->render(ROOT . '/templates/data/employ/thanks.phtml');
+		return $view->render(ROOT . '/app/templates/data/employ/thanks.phtml');
 	}
 	
 	

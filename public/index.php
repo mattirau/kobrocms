@@ -9,19 +9,17 @@
  *   
  */
 
-//ROOT Path modified to point to the web app folder
-$root = realpath(dirname(__FILE__). "/../app/");
+//ROOT Path modified to point to the real root of the application
+$root = realpath(dirname(__FILE__) . "/../");
 define('ROOT', $root);
 
-require 'vendor/autoload.php';
+// Register the new autoload
+require_once ROOT .'/app/autoload.php';
 
-// Require basic kobros klasses. Modules be using auto load so kobro cms very light!
-require_once ROOT . '/inc/KobroCms.php'; 
-require_once ROOT . '/inc/User.php';
-require_once ROOT . '/inc/Module.php';
-require_once ROOT . '/inc/View.php';
-require_once ROOT . '/inc/Mailer.php';
+// Register Autoload function
+spl_autoload_register("kobroAutoload");
 
+require_once ROOT . '/vendor/autoload.php';
 
 /* Mighty KobroCMS be implemented with fantastic patterns! */
 

@@ -34,7 +34,7 @@ class Module_Poll extends Module
 		$view->answers = $answers;
 		$view->forward = $params['forward'];
 		
-		return $view->render(ROOT . '/templates/data/poll/default.phtml');
+		return $view->render(ROOT . '/app/templates/data/poll/default.phtml');
 	}	
 	
 	

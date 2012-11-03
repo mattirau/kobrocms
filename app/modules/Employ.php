@@ -13,7 +13,7 @@ class Module_Employ extends Module
 		$view = new View();
 		$view->page = $this->kobros->page;
 		$view->error = false;
-		return $view->render(ROOT . '/templates/data/employ/default.phtml');
+		return $view->render(ROOT . '/app/templates/data/employ/default.phtml');
 	}	
 	
 	
@@ -37,7 +37,7 @@ class Module_Employ extends Module
 			$view = new View();
 			$view->error = true;
 			$view->page = $this->kobros->page;
-			return $view->render(ROOT . '/templates/data/employ/default.phtml');
+			return $view->render(ROOT . '/app/templates/data/employ/default.phtml');
 		} else {
 
 			// It must be uploaded file to move'n groove. We be moving the uploaded file outside root for security of course stupid! 
@@ -54,7 +54,7 @@ class Module_Employ extends Module
 	protected function _thanks($params)
 	{
 		$view = new View();
-		return $view->render(ROOT . '/templates/data/employ/thanks.phtml');
+		return $view->render(ROOT . '/app/templates/data/employ/thanks.phtml');
 	}
 	
 	

@@ -42,7 +42,7 @@ class Module_News extends Module
 		$view->news = $news;
 		$view->page_id = $params['page'];
 		
-		return $view->render(ROOT . '/templates/data/news/headlines.phtml');
+		return $view->render(ROOT . '/app/templates/data/news/headlines.phtml');
 				
 	}	
 	
@@ -54,7 +54,7 @@ class Module_News extends Module
 		$view->news = $news;
 		$view->page_id = $params['page'];
 		
-		return $view->render(ROOT . '/templates/data/news/default.phtml');
+		return $view->render(ROOT . '/app/templates/data/news/default.phtml');
 				
 	}	
 	
@@ -92,7 +92,7 @@ class Module_News extends Module
 		
 		$view->comments = $comments;
 				
-		return $view->render(ROOT . '/templates/data/news/view.phtml');
+		return $view->render(ROOT . '/app/templates/data/news/view.phtml');
 		
 	}
 	

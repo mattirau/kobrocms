@@ -15,7 +15,7 @@ class Module_User extends Module
 		$view->target = $params['target'];				
 		$view->user = $_SESSION['user'];
 		
-		return $view->render(ROOT . '/templates/data/user/info.phtml');
+		return $view->render(ROOT . '/app/templates/data/user/info.phtml');
 						
 	}	
 	
@@ -28,7 +28,7 @@ class Module_User extends Module
 		
 		$view->user = $this->kobros->user->obj;
 		
-		return $view->render(ROOT . '/templates/data/user/default.phtml');	
+		return $view->render(ROOT . '/app/templates/data/user/default.phtml');	
 	}
 	
 	
@@ -70,7 +70,7 @@ class Module_User extends Module
 			$view = new View();
 			$view->error = $error;
 			$view->user = $_SESSION['user'];
-			return $view->render(ROOT . '/templates/data/user/default.phtml');	
+			return $view->render(ROOT . '/app/templates/data/user/default.phtml');	
 			
 			
 		

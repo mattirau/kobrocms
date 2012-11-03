@@ -34,7 +34,7 @@ class Module_Html extends Module
 		$view->block_id = $params['block_id'];
 		
 		// Viewings renderer do dirty work now
-		return $view->render(ROOT . '/templates/data/html/default.phtml');
+		return $view->render(ROOT . '/app/templates/data/html/default.phtml');
 
 				
 	}
@@ -68,7 +68,7 @@ class Module_Html extends Module
 
 		
 		
-		return $view->render(ROOT . '/templates/data/html/edit.phtml');
+		return $view->render(ROOT . '/app/templates/data/html/edit.phtml');
 		
 		// die();
 	}
