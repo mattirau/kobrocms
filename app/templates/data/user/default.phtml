@@ -6,7 +6,7 @@
 
         <?php if ($this->user->role == 'anonymous'): ?>
 
-            <form method="post" action="/?page=<?php echo $this->kobros->page->id; ?>&amp;action=login">
+            <form method="post" action="<?php echo DOMAIN ?>?page=<?php echo $this->kobros->page->id; ?>&amp;action=login">
 
                 <?php if ($this->error): ?>
                     <p class="error">

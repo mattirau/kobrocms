@@ -3,12 +3,12 @@
 
         <h2>Site Search</h2>
 
-        <form id="searchform" method="get" action="/">
+        <form id="searchform" method="get" action="<?php echo DOMAIN ?>">
 
             <input type="hidden" name="page" value="<?php echo $this->page->id; ?>" />
             <input type="hidden" name="action" value="search" />
 
-            <input type="text" name="s" id="s" size="15" value="<?php echo $this->s; ?>" />
+            <input type="text" name="s" id="s" size="15" value="<?php echo htmlspecialchars($this->s); ?>" />
             <input type="submit" value="Search" />
 
         </form>

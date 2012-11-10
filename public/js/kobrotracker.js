@@ -8,7 +8,7 @@
 KobroTracker = function() {
 	// We create kobros div to contain trackings
 	document.write("<div id='kobrotracker' style='display: none;'></div>");	
-}
+};
 
 
 KobroTracker.get = function() {
@@ -29,7 +29,7 @@ KobroTracker.get = function() {
 	
 	return kt;
 	
-}
+};
 	
 
 KobroTracker.prototype = {
